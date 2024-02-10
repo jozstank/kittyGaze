@@ -61,7 +61,7 @@
             to="/about"
             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
           >
-            <img src="../../icon/1801287.svg" class="w-6" alt="" />
+            <img src="../../public/icon/1801287.svg" class="w-6" alt="" />
             <span class="ms-3">About</span>
           </router-link>
         </li>
@@ -71,7 +71,7 @@
             to="/foods"
             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
           >
-            <img src="../../icon/1801287.svg" class="w-6" alt="" />
+            <img src="../../public/icon/1801287.svg" class="w-6" alt="" />
 
             <span class="flex-1 ms-3 whitespace-nowrap">Cat Food & Snack</span>
           </router-link>
@@ -83,7 +83,7 @@
             to="/liked"
             class="cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
           >
-            <img src="../../icon/1801287.svg" class="w-6" alt="" />
+            <img src="../../public/icon/1801287.svg" class="w-6" alt="" />
 
             <span class="flex-1 ms-3 whitespace-nowrap">Liked cats</span>
             <span
@@ -99,7 +99,7 @@
             to="/videos"
             class="cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
           >
-            <img src="../../icon/1801287.svg" class="w-6" alt="" />
+            <img src="../../public/icon/1801287.svg" class="w-6" alt="" />
 
             <span class="flex-1 ms-3 whitespace-nowrap">Videos</span>
           </router-link>

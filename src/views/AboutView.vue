@@ -4,7 +4,7 @@
   <div
     class="flex flex-col items-center mt-12 sm:ml-64 px-10 max-w-3xl mx-auto"
   >
-    <img src="../../cat.svg" class="max-w-96" alt="" />
+    <img src="../../public/cat.svg" class="max-w-96" alt="" />
     <h1
       class="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl mx-auto"
     >

@@ -29,7 +29,7 @@
           </button>
 
           <a href="/" class="flex ms-2 sm:ms-7 md:me-24">
-            <img src="../../catIcon.png" class="h-12 me-3" />
+            <img src="../../public/catIcon.png" class="h-12 me-3" />
             <span
               class="self-center text-2xl font-bold sm:text-5xl whitespace-nowrap bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text"
               >KittyGaze
