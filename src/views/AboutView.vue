@@ -33,25 +33,43 @@
       fascination! 🐱✨
     </p>
 
-    <a
-      href="/"
+    <button
+      @click="goBack"
       class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 group-hover:from-red-200 group-hover:via-red-300 group-hover:to-yellow-200 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400"
     >
       <span
         class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
       >
-        Back To Main Gallery
+        Backward
       </span>
-    </a>
+    </button>
   </div>
 </template>
 <script>
 import NavComponent from "@/components/NavComponent.vue";
 import AsideComponent from "@/components/AsideComponent.vue";
+import useCatsDataStore from "@/catsDataStore";
+import { initFlowbite } from "flowbite";
+
 export default {
+  data() {
+    return {
+      catsStore: useCatsDataStore(),
+    };
+  },
   components: {
     NavComponent,
     AsideComponent,
+  },
+  mounted() {
+    initFlowbite();
+  },
+  methods: {
+    goBack() {
+      // window.scrollTo(0, 0);
+
+      window.history.go(-1);
+    },
   },
 };
 </script>

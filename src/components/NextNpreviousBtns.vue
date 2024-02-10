@@ -1,8 +1,9 @@
 <template>
   <div class="flex pb-4 sm:ml-64 justify-evenly">
     <!-- Previous Button -->
-    <a
-      href="#"
+    <button
+      v-show="pageNum > 1"
+      @click="previousPage"
       class="flex items-center justify-center px-4 h-10 me-3 text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
     >
       <svg
@@ -21,8 +22,9 @@
         />
       </svg>
       Previous
-    </a>
+    </button>
     <button
+      v-show="pageNum < 4"
       @click="nextPage"
       class="flex items-center justify-center px-4 h-10 text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
     >
@@ -46,21 +48,36 @@
   </div>
 </template>
 <script>
-import { compileScript } from "vue/compiler-sfc";
-import useCatsDataStore from "@/catsDataStore";
 export default {
   data() {
     return {
-      catsStore: useCatsDataStore(),
-      hrfLink: "#",
+      pageNum: Number(this.$route.params.id),
     };
   },
 
+  emits: ["next", "previous"],
   methods: {
     nextPage() {
-      this.catsStore.pageNumber += 1;
-      this.catsStore.fetchData();
-      // this.$router.push(`/page/${this.catsStore.pageNumber}`);
+      if (this.pageNum === 4) {
+        window.alert("There is no more page");
+        return;
+      } else {
+        this.pageNum += 1;
+        this.$emit("next", this.pageNum);
+      }
+      this.$router.push(`/page/${this.pageNum}`);
+      window.scrollTo(0, 0);
+    },
+    previousPage() {
+      if (this.pageNum === 1) {
+        window.alert("There is no previous page");
+        return;
+      } else {
+        this.pageNum -= 1;
+        this.$emit("previous", this.pageNum);
+      }
+      this.$router.push(`/page/${this.pageNum}`);
+      window.scrollTo(0, 0);
     },
   },
 };

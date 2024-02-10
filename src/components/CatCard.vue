@@ -2,9 +2,9 @@
   <div
     class="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
   >
-    <a href="#">
+    <div v-if="cat.image">
       <img class="rounded-t-lg" :src="cat.image.url" alt="" />
-    </a>
+    </div>
     <div class="p-5">
       <div>
         <h5
@@ -13,7 +13,7 @@
           {{ cat.name }}
         </h5>
 
-        <p class="text-md font-medium mb-1">
+        <p class="text-md font-medium mb-1 text-gray-700 dark:text-gray-400">
           Originally from: <span class="text-pink-400">{{ cat.origin }}</span>
         </p>
       </div>
@@ -25,12 +25,13 @@
           >{{ item }}</span
         >
       </div>
-      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+      <p id="desc" class="mb-3 font-normal text-gray-700 dark:text-gray-400">
         {{ cat.description }}
       </p>
+
       <div class="flex justify-between">
         <a
-          v-show="cat.vcahospitals_url"
+          v-if="cat.vcahospitals_url"
           :href="cat.vcahospitals_url"
           target="_blank"
           class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -52,20 +53,44 @@
             />
           </svg>
         </a>
+        <button
+          disabled
+          v-else
+          :href="cat.vcahospitals_url"
+          target="_blank"
+          class="inline-flex items-center px-3 py-2 text-sm font-medium text-center rounded-lg text-white bg-blue-300 disabled:opacity-25"
+        >
+          Details
+          <svg
+            class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 14 10"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M1 5h12m0 0L9 1m4 4L9 9"
+            />
+          </svg>
+        </button>
 
         <div class="flex items-center">
           <input
             type="checkbox"
             :id="cat.id"
             class="hidden"
-            v-model="isChecked"
+            v-model="cat.isLove"
           />
 
           <label :for="cat.id" class="cursor-pointer">
             <svg
-              v-if="isChecked"
+              v-if="cat.isLove"
               xmlns="http://www.w3.org/2000/svg"
-              fill="none"
+              fill="red"
               viewBox="0 0 24 24"
               stroke="red"
               class="w-6 h-6"
@@ -84,7 +109,7 @@
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke="currentColor"
+              stroke="#9ca3af"
               class="w-6 h-6"
             >
               <path
@@ -102,13 +127,13 @@
 </template>
 
 <script>
-import { stringify } from "postcss";
-
+import useCatsDataStore from "@/catsDataStore";
 export default {
   data() {
     return {
-      isChecked: false,
+      catsStore: useCatsDataStore(),
       temperament: null,
+      detailLink: null,
     };
   },
   computed: {
@@ -121,6 +146,16 @@ export default {
     cat: {
       type: Object,
       required: true,
+    },
+  },
+  methods: {
+    checkAuth() {
+      if (this.getIsAuth) {
+        this.detailLink = this.cat.vcahospitals_url;
+      } else {
+        window.alert("Please create an account to get full access !!");
+        this.$router.push("/create_acc");
+      }
     },
   },
 };

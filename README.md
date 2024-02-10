@@ -1,4 +1,4 @@
-# final-project
+# KittyGaze
 
 This template should help get you started developing with Vue 3 in Vite.
 
@@ -27,3 +27,10 @@ npm run dev
 ```sh
 npm run build
 ```
+
+# Overview
+
+I used Flowbite components on this project
+Flowbite has some error on vue3
+It may couse cannot scroll. If you face to this!! please click open side bar on/off btn and it will be ok
+Thank for visiting this project
