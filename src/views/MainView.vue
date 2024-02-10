@@ -8,7 +8,7 @@
         <div
           class="absolute animate-spin rounded-full h-36 w-36 border-t-4 border-b-4 border-purple-500"
         ></div>
-        <img src="../../catIcon.png" class="rounded-full w-24" />
+        <img src="../../public/catIcon.png" class="rounded-full w-24" />
       </div>
       <div id="loading-overlay" class="flex items-center justify-center">
         <svg
